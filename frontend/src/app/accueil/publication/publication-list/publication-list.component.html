@@ -1,0 +1,99 @@
+
+<div *ngIf="isloggedin">
+<!--Tablee -->
+<mat-spinner *ngIf="loading"></mat-spinner>
+
+<div class="limiter">
+  <div class="container-table100">
+    <div class="wrap-table100 missions-grid">
+ 
+      <div class="table100 ver1 m-b-110 mission-pane" >
+
+        <div class="table100-head mission-info">
+          
+          <table >
+            <thead>
+              <tr class="row100 head">
+                <th class=" column2">Title</th>
+                <th class=" column3">description</th>
+                <th class=" column4">image</th>
+                <th class=" column5">detail</th>
+                <th class=" column6">Action</th>
+              </tr>
+            </thead>
+          </table>
+        </div>
+        <div class="table100-body js-pscroll">
+          <table>
+            <tbody  *ngFor="let publication of publications">
+              <tr class="row100 body" class=" table-striped">
+                <td class=" column2" > {{ publication.title }} </td>
+                <td class=" column5"> {{ publication.description }}</td>
+                <td class=" column1 "> <img src= "{{ publication.image }}"  alt="pub image" width="50" height="50"> </td>
+                <td class=" column5"> {{ publication.detail }}</td>
+                <td class=" column6"><a [routerLink]="['/part-four/admin/modify-publication/' + publication._id]" ><i class="fas fa-pencil-alt"></i></a>
+                <button data-toggle="modal" data-target="#deletePublication" (click)="getId(publication._id)" ><i class="fas fa-trash-alt" style="color: red; margin-left:5px;"></i></button></td>
+              </tr>
+
+              
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+
+      <a class="collapse-item" routerLink="/part-four/admin/new-publication" routerLinkActive="active">Add Publication</a>
+</div>
+</div>
+</div>
+</div>
+  <!-- Delete Modal-->
+  <div class="modal fade" id="deletePublication" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Ready to delete ?</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">Are you sure you want to delete this pub ?</div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+          <a class="btn btn-primary" (click)="onDelete()" data-dismiss="modal">Delete</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- event Starts Here -->
+  <div class="team-section" *ngIf="!isloggedin">
+    <div class="container">
+
+
+      <div class="row">
+        <div class="col-md-8 offset-md-2">
+          <div class="section-heading">
+            <h2>Publication </h2>
+          </div>
+        </div>
+        </div>
+
+
+        <div class="row">
+          <div class="col-md-4 col-sm-6 col-xs-12"  *ngFor="let publication of publications">
+           <div class="team-item">
+            <img src= "{{ publication.image }}"  alt="publication image">
+            <div class="down-content">
+              <h4>{{ publication.title }}</h4>
+              <span>{{ publication.description }}</span>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  
+  <!-- event Ends Here -->

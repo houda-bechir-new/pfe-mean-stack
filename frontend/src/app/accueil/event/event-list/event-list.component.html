@@ -1,0 +1,102 @@
+
+
+
+<div *ngIf="isloggedin">
+<!--Tablee -->
+<mat-spinner *ngIf="loading"></mat-spinner>
+
+<div class="limiter" >
+  <div class="container-table100">
+    <div class="wrap-table100 missions-grid">
+ 
+      <div class="table100 ver1 m-b-110 mission-pane" >
+
+        <div class="table100-head mission-info">
+          
+          <table >
+            <thead>
+              <tr class="row100 head">
+                <th class=" column1">Image</th>
+                <th class=" column2">Title</th>
+                <th class=" column3">Date</th>
+                <th class=" column4">Localisation</th>
+                <th class=" column5">Description</th>
+                <th class=" column6">Action</th>
+              </tr>
+            </thead>
+          </table>
+        </div>
+        <div class="table100-body js-pscroll">
+          <table>
+            <tbody  *ngFor="let event of events">
+              <tr class="row100 body" class=" table-striped">
+                <td class=" column1 "> <img src= "{{ event.image }}"  alt="Event image" width="50" height="50"> </td>
+                <td class=" column2" > {{ event.title }} </td>
+                <td class=" column3"> {{ event.date }}</td>
+                <td class=" column4"> {{ event.localisation }}</td>
+                <td class=" column5"> {{ event.description }}</td>
+                <td class=" column6"><a [routerLink]="['/part-four/admin/modify-event/' + event._id]" ><i class="fas fa-pencil-alt"></i></a>
+                <button data-toggle="modal" data-target="#deleteEvent" (click)="getId(event._id)" ><i class="fas fa-trash-alt" style="color: red; margin-left:5px;"></i></button></td>
+              </tr>
+
+              
+            </tbody>
+          </table>
+        </div>
+      </div>
+    
+      <a routerLink="/part-four/admin/new-event" routerLinkActive="active">Add Event</a>
+</div>
+</div>
+</div>
+</div>
+
+  <!-- Delete Modal-->
+  <div class="modal fade" id="deleteEvent" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Ready to delete ?</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">Are you sure you want to delete this ?</div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+          <a class="btn btn-primary" (click)="onDelete()" data-dismiss="modal">Delete</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!--Event form start here-->
+<div class="services-section"  *ngIf="!isloggedin">
+  <div class="container">
+
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="section-heading">
+          <h2>Events</h2>
+        </div>
+      </div>
+    </div>  
+
+      <div class="row">
+       <div class="col-md-6 col-sm-12 col-xs-12" *ngFor="let event of events">
+        <div class="service-item">
+          <img src= "{{ event.image }}"  alt="Event  image" width="50" height="50">
+          <h4>{{ event.title }}</h4>
+          <p class="fa fa-calendar" aria-hidden="true"> {{ event.date }}  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;</p> 
+          <p class="fa fa-map-marker" aria-hidden="true">{{ event.localisation }}</p>
+          <p> {{ event.description }}</p>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+
+    <!--event form ends here-->
+      
+

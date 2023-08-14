@@ -1,0 +1,64 @@
+
+
+
+
+<!--Tablee -->
+<mat-spinner *ngIf="loading"></mat-spinner>
+
+<div class="limiter">
+  <div class="container-table100">
+    <div class="wrap-table100 missions-grid">
+ 
+      <div class="table100 ver1 m-b-110 mission-pane" >
+
+        <div class="table100-head mission-info">
+          
+          <table >
+            <thead>
+              <tr class="row100 head">
+               
+                <th class=" column1">First name</th>
+                <th class=" column2">Last name</th>
+                <th class=" column3">E-mail</th>
+                <th class=" column4">Action</th>
+
+              </tr>
+            </thead>
+          </table>
+        </div>
+        <div class="table100-body js-pscroll">
+          <table>
+            <tbody  *ngFor="let user of users">
+              <tr class="row100 body" class=" table-striped">
+                <td class=" column1" > {{ user.prenom }} </td>
+                <td class=" column2"> {{ user.nom }}</td>
+                <td class=" column3"> {{ user.email }}</td>
+                <td  class=" column4"><button data-toggle="modal" data-target="#deleteuser" (click)="getId(user._id)" ><i class="fas fa-trash-alt" style="color: red; margin-left:5px;"></i></button></td>
+              </tr>
+
+              
+            </tbody>
+          </table>
+        </div>
+      </div>
+    
+      <a routerLink="/part-four/admin/signup" routerLinkActive="active">Add user</a>
+
+  <!-- Delete Modal-->
+  <div class="modal fade" id="deleteuser" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Ready to delete ?</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">Are you sure you want to delete this ?</div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+          <a class="btn btn-primary" (click)="onDelete()" data-dismiss="modal">Delete</a>
+        </div>
+      </div>
+    </div>
+  </div>

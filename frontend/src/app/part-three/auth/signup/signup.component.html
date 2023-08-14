@@ -1,0 +1,56 @@
+<div class="container-contact100">
+  <div class="wrap-contact100"><img src="assets/images/fermer.jpg" width="15%" height="15%"   (click)="onBackToParts()" style="position:relative; left:380px; top:-35px;">
+
+<mat-spinner *ngIf="loading"></mat-spinner>
+<div class="col-sm-8 offset-sm-2 mt-2" *ngIf="!loading">
+  <form [formGroup]="signupForm" class="contact100-form validate-form">
+
+    <span class="contact100-form-title">
+      S'inscrire'!
+    </span>
+
+    <div class="form-group wrap-input100 validate-input" data-validate="non valide!">
+      
+      <input type="nom" id="nom" name="nom" formControlName="nom" class=" input100" placeholder="Last Name">
+      <span class="focus-input100"></span>
+    </div>
+
+    <div class="form-group wrap-input100 validate-input" data-validate="non valide!">
+      
+      <input type="prenom" id="prenom" name="Last Name" formControlName="prenom" class=" input100" placeholder="First Name">
+      <span class="focus-input100"></span>
+    </div>
+
+    <div class="wrap-input100 validate-input" data-validate = "non valide">
+				
+      <input class="input100" type="email" name="email" formControlName="email" placeholder="E-mail..">
+      <span class="focus-input100"></span>
+    </div>
+  
+    
+    <div class="form-group wrap-input100 validate-input" data-validate="non valide!">
+     
+      <input type="password" id="password" name="password" formControlName="password" class="input100 " placeholder="Password...">
+      <span class="focus-input100"></span>
+    </div>
+
+  
+
+    <div class="container-contact100-form-btn">
+      <div class="wrap-contact100-form-btn">
+        <div class="contact100-form-bgbtn"></div>
+    <button class=" contact100-form-btn" (click)="onSignup()" [disabled]="signupForm.invalid">
+      <span>
+        Connexion
+         <i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
+       </span>
+    </button>
+ 
+  </div>
+</div>
+  </form>
+  <p>{{ errorMessage }}</p>
+</div>
+
+</div>
+</div>

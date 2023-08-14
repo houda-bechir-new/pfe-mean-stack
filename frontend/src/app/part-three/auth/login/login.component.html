@@ -1,0 +1,44 @@
+<div class="container-contact100">
+  <div class="wrap-contact100"><img src="assets/images/fermer.jpg"  (click)="onBackToParts()" width="15%" height="15%" style="position:relative; left:380px; top:-35px;">
+
+<mat-spinner *ngIf="loading"></mat-spinner>
+<div class="col-sm-8 offset-sm-2 mt-2" *ngIf="!loading">
+  <form [formGroup]="loginForm" class="contact100-form validate-form">
+
+    <span class="contact100-form-title">
+      Se connecter!
+    </span>
+
+    <div class="form-group wrap-input100 validate-input" data-validate="non valide!">
+
+      <input type="email" id="email" formControlName="email" class="input100" name="email" placeholder="Entrez votre adresse..">
+      <span class="focus-input100"></span>
+
+    </div>
+    <div class="form-group wrap-input100 validate-input" data-validate = "non valide">
+
+      <input type="password" id="password" formControlName="password" class="input100" name="password" placeholder="Entrez votre mot de passe..">
+      <span class="focus-input100"></span>
+
+    </div>
+
+    <div class="text-center"><a  [routerLink]="['']"><u>Mot de passe oublié?</u></a></div>
+
+    <div class="container-contact100-form-btn">
+      <div class="wrap-contact100-form-btn">
+        <div class="contact100-form-bgbtn"></div>
+    <button class="contact100-form-btn" (click)="onLogin()" [disabled]="loginForm.invalid">
+      <span>
+        Connexion
+         <i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
+       </span>
+    </button>
+  
+      </div>
+    </div>
+  </form>
+  <p>{{ errorMessage }}</p>
+</div>
+
+</div>
+</div>

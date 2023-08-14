@@ -1,0 +1,82 @@
+
+
+
+
+<!--Tablee -->
+<mat-spinner *ngIf="loading"></mat-spinner>
+
+<div class="limiter" *ngIf="isloggedin">
+  <div class="container-table100">
+    <div class="wrap-table100 contacts-grid">
+      <div class="table100 ver1 m-b-110 contact-pane" >
+        <div class="table100-head contact-info"> 
+          <table >
+            <thead>
+              <tr class="row100 head">
+                <th class="cell100 column1">Tel number</th>
+                <th class="cell100 column2">E-mail</th>
+                <th class="cell100 column3">Youtube</th>
+                <th class="cell100 column3">Linkedin</th>
+                <th class="cell100 column3">Facebook</th>
+
+              </tr>
+            </thead>
+          </table>
+        </div>
+
+        <div class="table100-body js-pscroll">
+          <table>
+              <tbody>
+                <tr class="row100 body" class=" table-striped" *ngFor="let contact of contacts" >
+                <td class="cell100 column1"> {{ contact.numtel }}</td>
+                <td class="cell100 column2"> {{ contact.mail }}</td>
+                <td class="cell100 column2"> {{ contact.youtube }}</td>
+
+                <td class="cell100 column2"> {{ contact.linkedin }}</td>
+
+                <td class="cell100 column2"> {{ contact.facebook }}</td>
+
+                <td class="cell100 column3"><a [routerLink]="['/part-four/admin/modify-contact/' + contact._id]" class="btn btn-primary"><i class="fas fa-pencil-alt"></i></a></td>
+               
+              </tr>
+
+              
+            </tbody>
+          </table>
+        </div>
+     </div>
+</div>
+</div>
+      </div>
+    
+
+      <!-- Contact Us Starts Here -->
+    <div class="contact-us"*ngIf="!isloggedin">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="right-content text-center">
+              <div class="section-heading">
+               <h2>Our contact</h2>
+               <br>
+               <h3>Let's keep in touch</h3>
+
+              </div>
+              <div class="row" *ngFor="let contact of contacts">
+                <div class="col-md-6 col-sm-12" >
+                  <ul>
+                    <li><i class="fa fa-phone"></i>{{ contact.numtel }}</li>
+                  </ul>
+                </div>
+                <div class="col-md-6 col-sm-12" >
+                  <ul>
+                    <li><i class="fa fa-envelope"></i>{{ contact.mail }}</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Contact Us Ends Here -->

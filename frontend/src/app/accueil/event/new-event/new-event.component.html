@@ -1,0 +1,34 @@
+<mat-spinner *ngIf="loading"></mat-spinner>
+<div *ngIf="!loading" class="col-sm-6 offset-sm-3 mt-2">
+  <form [formGroup]="eventForm">
+    <div class="form-group">
+      <label for="title">Title</label>
+      <input type="text" placeholder="nom de l'evenement" id="title" formControlName="title" class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="date">date:</label>
+        <input type="date" id="date" name="date" formControlName="date">
+    </div>
+    <div class="form-group">
+        <label for="birthday">localisation:</label>
+        <input type="localisation" id="localisation" name="localisation" formControlName="localisation">
+    </div>
+    <div class="form-group">
+      <label for="description">Description</label>
+      <textarea name="description"
+                id="description"
+                cols="30" rows="7"
+                class="form-control"
+                formControlName="description"
+                placeholder="Décrivez votre objet (type, qualité, etc.)"></textarea>
+    </div>
+    <button class="btn btn-success" type="button" (click)="filePicker.click()">Ajouter image</button>
+    <input type="file" #filePicker (change)="onImagePick($event)">
+    <div class="image-preview" *ngIf="imagePreview">
+      <img [src]="imagePreview" alt="">
+    </div>
+ 
+    <button class="btn btn-primary" (click)="onSubmit()" [disabled]="eventForm.invalid">Valider</button>
+    <p class="alert-danger" *ngIf="errorMessage">{{ errorMessage }}</p>
+  </form>
+</div>

@@ -1,0 +1,34 @@
+
+<mat-spinner *ngIf="loading"></mat-spinner>
+<div *ngIf="!loading" class="col-sm-6 offset-sm-3 mt-2">
+  <form [formGroup]="contactForm">
+    <div class="form-group">
+      <label for="numtel">Tel number</label>
+      <input type="text" placeholder="Tel number" id="numtel" formControlName="numtel" class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="mail">E-mail</label>
+        <input type="mail" placeholder="E-mail" id="mail" formControlName="mail" class="form-control">
+    </div>
+      
+    <div class="form-group">
+        <label for="youtube">Youtube</label>
+        <input type="text" placeholder="youtube" id="youtube" formControlName="youtube" class="form-control">
+    </div>
+
+    <div class="form-group">
+        <label for="linkedin">Linkedin</label>
+        <input type="text" placeholder="linkedin" id="linkedin" formControlName="linkedin" class="form-control">
+    </div>
+
+    <div class="form-group">
+        <label for="facebook">Facebook</label>
+        <input type="text" placeholder="facebook" id="facebook" formControlName="facebook" class="form-control">
+    </div>
+
+    
+    <button class="btn btn-primary" (click)="onSubmit()" [disabled]="contactForm.invalid">Valider</button>
+    <p class="alert-danger" *ngIf="errorMessage">{{ errorMessage }}</p>
+  </form>
+</div>
+
